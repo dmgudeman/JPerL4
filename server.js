@@ -20,6 +20,12 @@ app.configure(function(){
     app.use(express.static(__dirname + '/JPerL4View/public'));    
 });
 
+app.get('/',function(req, res) {
+  res.json({ status: 'success' })
+});
+
+
+
 app.get('/api/song', function(req, res) {
   console.log("req: " + JSON.stringify(req.query));
   var title = req.query.title;
