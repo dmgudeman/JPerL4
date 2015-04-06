@@ -1,16 +1,17 @@
-var express = require('express')
-  , app = express.createServer(express.logger())
-  , pg = require('pg')
-  , connectionString = process.env.DATABASE_URL || 'postgres://postgres:Printer238@localhost:5433/JPerL'
-  , start = new Date()
-  , port = 80
-  , client;
+var http = require('http');
+var express = require('express');
+var app = express();
+app.set('port', 80);
 
-client = new pg.Client(connectionString);
-client.connect();
-var flash = require('express-flash');
+//var pg = require('pg');
+//var connectionString = process.env.DATABASE_URL || 'postgres://postgres:Printer238@localhost:5433/JPerL';
 
-app.configure(function(){
+
+//client = new pg.Client(connectionString);
+//client.connect();
+//var flash = require('express-flash');
+
+/*app.configure(function(){
     app.use(flash());
     app.use(express.cookieParser('keyboard cat'));
     app.use(express.session({ cookie: { maxAge: 60000 }, secret: 'topsecret'}));
@@ -18,13 +19,14 @@ app.configure(function(){
     app.use(app.router);
     app.use(express.compress());
     app.use(express.static(__dirname + '/JPerL4View/public'));    
-});
+});*/
+
 
 app.get('/',function(req, res) {
   res.json({ status: 'success' })
 });
 
-
+/*
 
 app.get('/api/song', function(req, res) {
   console.log("req: " + JSON.stringify(req.query));
@@ -77,7 +79,7 @@ query.on( 'end', function() {
     client.end();
 });
 //res.send("inserted song");
-});
-app.listen(port, function() {
-  console.log('Listening on:', port);
+});*/
+app.listen(app.get('port'), function() {
+  console.log('Listening on:', 80);
 });
